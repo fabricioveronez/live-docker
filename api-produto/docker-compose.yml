@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  api-produto:
+    image: api-produto
+    build:
+      context: src
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+      MONGODB_URI: mongodb://mongouser:mongopwd@mongodb:27017/admin
+    ports:
+      - 8080:8080
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "app.js"]
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: mongouser
+      MONGO_INITDB_ROOT_PASSWORD: mongopwd
