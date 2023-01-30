@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 networks:
   wordpress_net:
@@ -36,8 +36,8 @@ services:
     environment:
       PMA_HOST: wp-db
       PMA_PORT: 3306 
-      PMA_USER: wordpress 
-      PMA_PASSWORD: wordpresspwd 
+      PMA_USER: ${DATABASE_USER_NAME} 
+      PMA_PASSWORD: ${DATABASE_USER_PWD} 
 
   wp-db:
     image: mysql:8.0.30
